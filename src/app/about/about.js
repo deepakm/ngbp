@@ -33,12 +33,25 @@ angular.module( 'ngBoilerplate.about', [
   ];
   $scope.query = "";
   $scope.data = "";
+  $scope.url = "http://localhost:9002/";
+  $scope.datastore = "store";
+  $scope.datastores = [];
 
   $scope.queryChanged = function() {
       var r = $scope.query.split(' ').join('+');
-      var url = "http://localhost:9002/store/query/?query=" + r;
+      var url = $scope.url + $scope.datastore + "/query/?query=" + r;
       $http.get(url).then(function(response) {
           $scope.data = response.data;
+      });
+  };
+
+  $scope.loadUrl = function() {
+      $scope.query = "";
+      $scope.data = "";
+      var url = $scope.url + "datastores/";
+      console.log(url);
+      $http.get(url).then(function(response) {
+          $scope.datastores = response.data;
       });
   };
 

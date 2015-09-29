@@ -1,5 +1,12 @@
-<div class="row">
-    <center><input type="text" size="60" name="input" ng-model="query" ng-change="queryChanged()"></center>
+<div class="row" style="padding-bottom:10px; padding-top:20px;">
+    <center><input type="text" size="60" name="input" ng-model="url"> <button type="button" class='btn btn-default' ng-click="loadUrl()">Load URL</button></center>
+</div>
+<div class="row" style="padding-bottom:10px; padding-top:20px;">
+    <center>
+    <select name="repeatSelect" id="repeatSelect" ng-model="datastore">
+        <option ng-repeat="option in datastores" value="{{option.name}}">{{option.name}}</option>
+    </select>
+    <input type="text" size="60" name="input" ng-model="query" ng-change="queryChanged()"></center>
 </div>
 <div class="row">
     <div class="well well-sm"> Num Hits : {{data.numhits}}   Time Taken : {{data.took}} </div>
